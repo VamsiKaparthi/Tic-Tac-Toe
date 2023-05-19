@@ -13,20 +13,26 @@ let Gameboard = {
     gameboardArr:[0,0,0,0,0,0,0,0,0]
 }
 
-
-let gameboardfill = ()=>{
-    let gameboardArr = Gameboard.gameboardArr
-    for(let i = 0;i<gameboardArr.length;i++){
-        let box = document.getElementById(`box${i}`)
-        if(gameboardArr[i]=="x"){
-            box.innerHTML = "X"
-        }
-        else if(gameboardArr[i]=="o"){
-            box.innerHTML = "O"
-        }
-        else{
-            continue;
+const game = (()=>{
+    let gameboardfill = ()=>{
+        let gameboardArr = Gameboard.gameboardArr
+        for(let i = 0;i<gameboardArr.length;i++){
+            let box = document.getElementById(`box${i}`)
+            if(gameboardArr[i]=="x"){
+                box.innerHTML = "X"
+            }
+            else if(gameboardArr[i]=="o"){
+                box.innerHTML = "O"
+            }
+            else{
+                continue;
+            }
         }
     }
-}
+
+
+
+    return{gameboardfill}
+})
+
 gameboardfill();
