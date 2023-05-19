@@ -29,10 +29,7 @@ const game = (()=>{
             }
         }
     }
-
-
-
     return{gameboardfill}
-})
+})();
 
-gameboardfill();
+game.gameboardfill()
