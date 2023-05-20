@@ -44,3 +44,10 @@ body{
     width: 396px;
     flex-wrap: wrap;
 }
+.box{
+    border: 1px solid black;
+    height: 130px;
+    width: 130px;
+    font-size: 110px;
+    text-align: center;
+}
