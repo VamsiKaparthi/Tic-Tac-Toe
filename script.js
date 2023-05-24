@@ -69,9 +69,10 @@ const game = (()=>{
         }
         return false;
     }
+
+    
     document.getElementById("start").addEventListener('click',()=>{
         console.log(Gameboard.gameboardArr)
-
         if(document.getElementById("start").innerHTML=="Start a new game"){
             po.style.borderBottom = "none"
             Gameboard.counter=0
@@ -88,7 +89,7 @@ const game = (()=>{
                 box.style.fontWeight="600"
                 box.style.textAlign="center"
                 box.setAttribute('id',`${i}`)
-                px.style.borderBottom = "4px solid rgb(107, 107, 138)"
+                px.style.borderBottom = "4px solid #0089BA"
                 box.addEventListener('click',()=>{
                     //if grid place is empty or not 
                     if(checkEmpty()){
@@ -102,7 +103,7 @@ const game = (()=>{
                             }
                             else{
                                 po.style.borderBottom = "none"
-                                px.style.borderBottom = "4px solid rgb(107, 107, 138)"
+                                px.style.borderBottom = "4px solid #0089BA"
                                 Gameboard.gameboardArr[i]="o"
                                 Gameboard.counter++;
                             }
@@ -118,7 +119,7 @@ const game = (()=>{
                             document.getElementById('game').removeChild(box);                
                         }
                         document.getElementById("win").style.display= "flex";
-                        document.getElementById("win").innerHTML = `Player ${player} has won the game`
+                        document.getElementById("win").innerHTML = ` Player ${player} has won the game`
                         document.getElementById("start").innerHTML="Start a new game"
                     }
                     else if(checkEmpty()==false){
