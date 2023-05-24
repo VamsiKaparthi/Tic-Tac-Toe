@@ -1,5 +1,7 @@
 const game = (()=>{
     let gameboard = document.getElementById("game");
+    let px = document.getElementById("x")
+    let po = document.getElementById("o")
     let Gameboard = {
         gameboardArr:["0", "0", "0", "0", "0", "0", "0", "0", "0"],
         counter:0
@@ -71,6 +73,7 @@ const game = (()=>{
         console.log(Gameboard.gameboardArr)
 
         if(document.getElementById("start").innerHTML=="Start a new game"){
+            po.style.borderBottom = "none"
             Gameboard.counter=0
             Gameboard.gameboardArr=["0", "0", "0", "0", "0", "0", "0", "0", "0"]
             document.getElementById("win").style.display="none";
@@ -84,16 +87,21 @@ const game = (()=>{
                 box.style.fontFamily="sans-serif"
                 box.style.textAlign="center"
                 box.setAttribute('id',`${i}`)
+                px.style.borderBottom = "4px solid rgb(107, 107, 138)"
                 box.addEventListener('click',()=>{
                     //if grid place is empty or not 
                     if(checkEmpty()){
                         console.log(Gameboard.counter)
                         if(Gameboard.gameboardArr[i]=="0"){
                             if(Gameboard.counter%2==0){
+                                px.style.borderBottom = "none"
+                                po.style.borderBottom = "4px solid rgb(107, 107, 138)"
                                 Gameboard.gameboardArr[i]="x"
                                 Gameboard.counter++;
                             }
                             else{
+                                po.style.borderBottom = "none"
+                                px.style.borderBottom = "4px solid rgb(107, 107, 138)"
                                 Gameboard.gameboardArr[i]="o"
                                 Gameboard.counter++;
                             }
@@ -128,6 +136,8 @@ const game = (()=>{
             }
         }
         else if(document.getElementById("start").innerHTML=="Restart"){
+            px.style.borderBottom = "4px solid rgb(107, 107, 138)"
+            po.style.borderBottom = "none"
             Gameboard.counter=0;
             Gameboard.gameboardArr=["0", "0", "0", "0", "0", "0", "0", "0", "0"]
             gameboardfill()
@@ -137,12 +147,6 @@ const game = (()=>{
     return{Gameboard,gameboardfill,logic}
 })();
 
-//personFactory
 
-const playerFactory=(playerName)=>{
-    return{
-        playerName:playerName
-    }
-}
 
 
