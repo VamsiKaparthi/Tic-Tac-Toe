@@ -24,7 +24,7 @@ body{
     background-color: aqua;
 }
 .game_area{
-    width: 33%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,4 +50,15 @@ body{
     width: 130px;
     font-size: 110px;
     text-align: center;
+}
+.winner{
+    display: none;
+    font-family: sans-serif;
+    color: rgb(83, 118, 129);
+    font-weight: 500;
+    height: 396px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
 }

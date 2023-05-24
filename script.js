@@ -1,37 +1,51 @@
 const game = (()=>{
     let gameboard = document.getElementById("game");
-    let counter=0;
-    for(let i=0; i<9; i++){
-        let box = document.createElement("div");
-        box.style.border="1px solid black"
-        box.style.height="130px"
-        box.style.width="130px";
-        box.style.fontSize = "110px"
-        box.style.textAlign="center"
-        box.setAttribute('id',`${i}`)
-        box.addEventListener('click',()=>{
-            //if grid place is empty or not 
-            if(checkEmpty){
-                if(Gameboard.gameboardArr[i]=="0"){
-                    if(counter%2==0){
-                        Gameboard.gameboardArr[i]="x"
-                        counter++;
-                    }
-                    else{
-                        Gameboard.gameboardArr[i]="o"
-                        counter++;
-                    }
-                }
-            }
-            //gameboardfill();
-            console.log(Gameboard.gameboardArr)
-            console.log(logic())
+    // let counter=0;
+    // for(let i=0; i<9; i++){
+    //     let box = document.createElement("div");
+    //     box.style.border="1px solid black"
+    //     box.style.height="130px"
+    //     box.style.width="130px";
+    //     box.style.fontSize = "110px"
+    //     box.style.textAlign="center"
+    //     box.setAttribute('id',`${i}`)
+    //     box.addEventListener('click',()=>{
+    //         //if grid place is empty or not 
+    //         if(checkEmpty){
+    //             if(Gameboard.gameboardArr[i]=="0"){
+    //                 if(counter%2==0){
+    //                     Gameboard.gameboardArr[i]="x"
+    //                     counter++;
+    //                 }
+    //                 else{
+    //                     Gameboard.gameboardArr[i]="o"
+    //                     counter++;
+    //                 }
+    //             }
+    //         }
+    //         gameboardfill();
+    //         console.log(Gameboard.gameboardArr)
+    //         if(logic()=="x"||logic()=="o"){
+    //             console.log(logic());
+    //             let player = (logic()).toUpperCase()
+
+    //             for(let i=0;i<9;i++){
+    //                 let box = document.getElementById(`${i}`)
+    //                 document.getElementById('game').removeChild(box);                
+    //             }
+    //             document.getElementById("win").style.display= "flex";
+    //             document.getElementById("win").innerHTML = `Player ${player} has won the game`
+    //         }
+    //         else{
+    //             console.log(logic())
+    //         }
             
-        })
-        gameboard.appendChild(box);
-    }
+    //     })
+    //     gameboard.appendChild(box);
+    // }
     let Gameboard = {
-        gameboardArr:["0", "0", "0", "0", "0", "0", "0", "0", "0"]
+        gameboardArr:["0", "0", "0", "0", "0", "0", "0", "0", "0"],
+        counter:0
     }
     let gameboardfill = ()=>{
         let gameboardArr = Gameboard.gameboardArr
@@ -44,7 +58,7 @@ const game = (()=>{
                 box.innerHTML = "O"
             }
             else{
-                continue;
+                box.innerHTML="";
             }
         }
     }
@@ -96,8 +110,67 @@ const game = (()=>{
         }
         return false;
     }
+    document.getElementById("start").addEventListener('click',()=>{
+        console.log(Gameboard.gameboardArr)
+        if(document.getElementById("start").innerHTML=="Start a new game"){
+            Gameboard.counter=0
+            Gameboard.gameboardArr=["0", "0", "0", "0", "0", "0", "0", "0", "0"]
+            document.getElementById("win").style.display="none";
+            document.getElementById("start").innerHTML="Restart"
+            for(let i=0; i<9; i++){
+                let box = document.createElement("div");
+                box.style.border="1px solid black"
+                box.style.height="130px"
+                box.style.width="130px";
+                box.style.fontSize = "110px"
+                box.style.textAlign="center"
+                box.setAttribute('id',`${i}`)
+                box.addEventListener('click',()=>{
+                    //if grid place is empty or not 
+                    if(checkEmpty){
+                        console.log(Gameboard.counter)
+                        if(Gameboard.gameboardArr[i]=="0"){
+                            if(Gameboard.counter%2==0){
+                                Gameboard.gameboardArr[i]="x"
+                                Gameboard.counter++;
+                            }
+                            else{
+                                Gameboard.gameboardArr[i]="o"
+                                Gameboard.counter++;
+                            }
+                        }
+                    }
+                    gameboardfill();
+                    console.log(Gameboard.gameboardArr)
+                    if(logic()=="x"||logic()=="o"){
+                        console.log(logic());
+                        let player = (logic()).toUpperCase()
+        
+                        for(let i=0;i<9;i++){
+                            let box = document.getElementById(`${i}`)
+                            document.getElementById('game').removeChild(box);                
+                        }
+                        document.getElementById("win").style.display= "flex";
+                        document.getElementById("win").innerHTML = `Player ${player} has won the game`
+                        document.getElementById("start").innerHTML="Start a new game"
+                    }
+                    else{
+                        console.log(logic())
+                    }
+                    
+                })
+                gameboard.appendChild(box);
+            }
+        }
+        else if(document.getElementById("start").innerHTML=="Restart"){
+            
+            Gameboard.counter=0;
+            Gameboard.gameboardArr=["0", "0", "0", "0", "0", "0", "0", "0", "0"]
+            gameboardfill()
+        }
+         
+    })
     return{Gameboard,gameboardfill,logic}
 })();
 
-//const playerFactory=()
 
