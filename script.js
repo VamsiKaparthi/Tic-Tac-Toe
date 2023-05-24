@@ -11,10 +11,10 @@ const game = (()=>{
         for(let i = 0;i<gameboardArr.length;i++){
             let box = document.getElementById(i)
             if(gameboardArr[i]=="x"){
-                box.innerHTML = "X"
+                box.innerHTML = `<span style="color:#0089BA">X</span>`
             }
             else if(gameboardArr[i]=="o"){
-                box.innerHTML = "O"
+                box.innerHTML = `<span style="color:rgb(107, 107, 138)">O</span>`
             }
             else{
                 box.innerHTML="";
@@ -85,6 +85,7 @@ const game = (()=>{
                 box.style.width="130px";
                 box.style.fontSize = "110px"
                 box.style.fontFamily="sans-serif"
+                box.style.fontWeight="600"
                 box.style.textAlign="center"
                 box.setAttribute('id',`${i}`)
                 px.style.borderBottom = "4px solid rgb(107, 107, 138)"
